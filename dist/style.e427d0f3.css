@@ -1,0 +1,158 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  color: black;
+  text-decoration: none;
+  border: none;
+  display: block;
+}
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+body {
+  background-color: #eee;
+}
+.logo {
+  width: 200px;
+  height: 50px;
+  border: 1px solid red;
+  margin: 50px auto 0px;
+}
+.searchForm {
+  display: flex;
+  margin: 30px 20px 40px;
+  justify-content: center;
+  border-radius: 8px;
+}
+@media (min-width: 500px) {
+  .searchForm {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.searchForm input {
+  padding: 0 10px;
+  border: none;
+  outline: none;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.searchForm button {
+  white-space: nowrap;
+  padding: 10px 15px;
+}
+.searchForm button .icon {
+  font-size: 15px;
+}
+.sites {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 40px;
+  justify-content: space-between;
+}
+@media (min-width: 500px) {
+  .siteMain {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .sites {
+    margin-left: 0;
+    margin-right: -12.5px;
+    justify-content: start;
+  }
+}
+.siteWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 130px;
+  height: 120px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  cursor: pointer;
+}
+@media (min-width: 500px) {
+  .siteWrapper:hover {
+    background-color: rgba(233, 230, 230, 0.8);
+  }
+  .siteWrapper,
+  .addSite {
+    margin-right: 12.5px;
+  }
+}
+.siteWrapper span {
+  text-align: center;
+  width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.oneSite {
+  width: 60px;
+  height: 60px;
+  border: 1px solid red;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+}
+
+.addSite span {
+  position: absolute;
+  left: 50%;
+  bottom: 15%;
+  transform: translateX(-50%);
+}
+.addSite {
+  position: relative;
+  width: 130px;
+  height: 120px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  cursor: pointer;
+}
+.addSite > .icon {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+}
+.delete {
+  position: absolute;
+  visibility: hidden;
+  top: 5px;
+  right: 5px;
+  cursor: default;
+}
+.siteWrapper:hover .delete {
+  visibility: visible;
+}
+.delete:hover {
+  visibility: visible;
+}
+.delete .icon {
+  font-size: 20px;
+}
+
+
+/*# sourceMappingURL=/style.e427d0f3.css.map */
