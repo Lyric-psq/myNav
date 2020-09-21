@@ -139,17 +139,18 @@ body {
 }
 .delete {
   position: absolute;
-  visibility: hidden;
   top: 5px;
   right: 5px;
   cursor: default;
 }
-.siteWrapper:hover .delete {
-  visibility: visible;
-}
-.delete:hover {
-  visibility: visible;
-}
-.delete .icon {
-  font-size: 20px;
+@media (min-width: 500px) {
+  .siteWrapper .delete {
+    visibility: hidden;
+  }
+  .siteWrapper:hover .delete {
+    visibility: visible;
+  }
+  .delete .icon {
+    font-size: 20px;
+  }
 }

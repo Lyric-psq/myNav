@@ -1,0 +1,56 @@
+一、添加站点
+1.点击添加站点按钮要让用户输入一个网址
+2.帮助用户加上http或者https完整网址
+3.新生成一个站点卡片 插入到添加站点前
+4.添加完以后回来就没有了 
+用数组保存数据(把初始的也保存在hash数组里)
+5.保存完数据 重新渲染 
+6.注意第9行
+window.onbeforeunload监听
+7.当用户要关闭页面之前，要保存在localStorage里，不然重新回来又没了
+8.localStorage只能存字符串，所以要先变成字符串JSON.stringify，然后再变成对象parse
+（在application里可以查看localStorage）
+9.为了第一个字母把https www都删掉
+10.细节 简化url 
+11.删除的时候 点击删除 会点击a标签 要阻止冒泡
+也可以直接阻止默认事件
+但是发现没办法阻止a标签冒泡，去掉a标签用js实现
+12.要删除要找到索引,splice删除,重新渲染
+13.手机终于做完了！pc 媒体查询
+
+
+
+
+
+
+
+
+
+
+
+1.先把html大概写好 类命好名
+2.css选择器差不多写上 空格包含 >子元素
+3.加上body的边框 虽然body只有那一块，给body加背景色浏览器会智能地扩展到整个网页
+4.form method get action
+5.只有a内联包块可以
+6.引入jquery  bootcdn min结尾
+7.read only 可能是const
+8.保证数据不会丢失 用户离开时存在localstorage 然后再打开时再读取
+9.JSON.stringify 把对象变成字符串
+10.JSON.parse 把字符串变成对象
+11.文章 30分钟入门正则表达式 deerchao
+12.用js代替a标签
+13.有最大宽度 可以margin auto
+14.最小宽度500
+发布
+parcel bulid src/index.html 报错svg
+解决：parcel bulid src/index.html --no-minify
+rm -rf dist
+再 parcel bulid src/index.html --no-minify
+改build url
+parcel bulid src/index.html --no-minify --public url ./
+gitignore /.cache/ /node_modules/ /.idea/
+
+一键发布
+yarn init-y
+在package.json里"scripts": {"bulid":"rm -rf dist" && "parcel bulid src/index.html --no-minify --public url ./"}
