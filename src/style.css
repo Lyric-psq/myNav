@@ -13,6 +13,15 @@ a {
   border: none;
   display: block;
 }
+img {
+  max-width: 100%;
+  cursor: pointer;
+}
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
 .icon {
   width: 1em;
   height: 1em;
@@ -22,41 +31,61 @@ a {
 }
 
 body {
-  background-color: #eee;
+  /* background-color: #eee; */
+  background: url(./bgc2.jpg) center;
 }
 .logo {
   width: 200px;
-  height: 50px;
-  border: 1px solid red;
+  height: 100px;
   margin: 50px auto 0px;
+  position: relative;
+}
+.logo img {
+  position: absolute;
+  top: -40%;
+}
+@media (min-width: 500px) {
+  .logo {
+    width: 400px;
+  }
+  .logo img {
+    position: absolute;
+    top: -100%;
+  }
 }
 .searchForm {
+  position: relative;
   display: flex;
-  margin: 30px 20px 40px;
+  margin: 8px 20px 30px;
   justify-content: center;
-  border-radius: 8px;
 }
 @media (min-width: 500px) {
   .searchForm {
     max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 80px auto 30px;
   }
 }
 .searchForm input {
-  padding: 0 10px;
+  padding: 0 45px;
   border: none;
   outline: none;
   width: 100%;
-  border-radius: 4px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #fff;
+  opacity: 0.6;
+  font-weight: 700;
+  font-size: 17px;
 }
-
-.searchForm button {
-  white-space: nowrap;
-  padding: 10px 15px;
+.searchForm input:hover {
+  box-shadow: 5px 5px 5px 5px rgba(250, 250, 250, 0.5);
 }
 .searchForm button .icon {
+  position: absolute;
   font-size: 15px;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .sites {
   display: flex;
@@ -85,11 +114,12 @@ body {
   width: 130px;
   height: 120px;
   margin-bottom: 20px;
-  background-color: #fff;
-  cursor: pointer;
+  border-radius: 25px;
+  background-color: #ccc;
 }
 @media (min-width: 500px) {
   .siteWrapper:hover {
+    background-color: none;
     background-color: rgba(233, 230, 230, 0.8);
   }
   .siteWrapper,
@@ -105,14 +135,16 @@ body {
   text-overflow: ellipsis;
 }
 .oneSite {
-  width: 60px;
-  height: 60px;
-  border: 1px solid red;
-  border-radius: 50%;
+  width: 50px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 35px;
+}
+.oneSite > img {
+  border-radius: 50%;
+  width: 60px;
+  font-size: 30px;
 }
 
 .addSite span {
@@ -126,13 +158,13 @@ body {
   width: 130px;
   height: 120px;
   margin-bottom: 20px;
-  background-color: #fff;
+  /* background-color: #ccc; */
   cursor: pointer;
 }
 .addSite > .icon {
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   left: 50%;
   top: 40%;
   transform: translate(-50%, -50%);
@@ -141,16 +173,26 @@ body {
   position: absolute;
   top: 5px;
   right: 5px;
-  cursor: default;
+  cursor: pointer;
+}
+.edit {
+  position: absolute;
+  top: 5px;
+  right: 25px;
+  cursor: pointer;
 }
 @media (min-width: 500px) {
-  .siteWrapper .delete {
+  .delete,
+  .edit {
     visibility: hidden;
   }
-  .siteWrapper:hover .delete {
+  .siteWrapper:hover .delete,
+  .siteWrapper:hover .edit {
     visibility: visible;
   }
-  .delete .icon {
-    font-size: 20px;
-  }
+}
+#siteLogo {
+  position: absolute;
+  font-size: 50px;
+  display: none;
 }

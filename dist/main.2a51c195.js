@@ -122,10 +122,12 @@ var stringData = localStorage.getItem("siteData"); // 如果JSON.parse(stringDat
 
 var hashMap = JSON.parse(stringData) || [{
   logo: "B",
-  url: "https://www.baidu.com"
+  url: "https://www.baidu.com",
+  name: "baidu.com"
 }, {
-  logo: "M",
-  url: "https://developer.mozilla.org/zh-CN"
+  logo: "B",
+  url: "https://www.bilibili.com",
+  name: "bilibili.com"
 }];
 var $sites = $(".sites");
 var $last = $(".last");
@@ -134,26 +136,40 @@ var render = function render() {
   // 每次渲染都要把之前保存在hash里的数据去掉，不然会多次渲染
   $sites.find("li:not(.last)").remove();
   hashMap.forEach(function (node, index) {
-    var $sites = $("<li>\n        <a href=\"".concat(node.url, "\">\n          <div class=\"siteWrapper\">\n            <div class=\"oneSite\">").concat(node.logo, "</div>\n            <span>").concat(simplify(node.url), "</span>\n            <div class=\"delete\">\n                <svg class=\"icon\" aria-hidden=\"true\">\n                    <use xlink:href=\"#icon-delete\"></use>\n                </svg>\n            </div>\n          </div>\n        </a>\n      </li>")).insertBefore($last);
+    var $sites = $("<li>\n        <a href=\"".concat(node.url, "\">\n          <div class=\"siteWrapper\">\n            <div class=\"oneSite\"><img id=\"icon-img\" src=\"").concat(node.url, "/favicon.ico\" alt=\"").concat(node.logo, "\"></div>\n            <span>").concat(node.name, "</span>\n            <div class=\"delete\">\n                <svg class=\"icon\" aria-hidden=\"true\">\n                    <use xlink:href=\"#icon-delete\"></use>\n                </svg>\n            </div>\n            <div class=\"edit\">\n                <svg class=\"icon\" aria-hidden=\"true\">\n                    <use xlink:href=\"#icon-xiugai\"></use>\n                </svg>\n            </div>\n          </div>\n        </a>\n      </li>")).insertBefore($last);
     $sites.on("click", ".delete", function (e) {
       e.preventDefault();
       e.stopPropagation();
-      hashMap.splice(index, 1);
+      var bool = window.confirm("确定要删除该网站吗？");
+
+      if (bool) {
+        hashMap.splice(index, 1);
+      }
+
       render();
     });
-  });
+    $sites.on("click", ".edit", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var siteName = window.prompt("请输入新的网站名称");
+      hashMap[index].name = siteName;
+      render();
+    });
+  }); // $sites.on("error", "#icon-img", (e) => {
+  //   console.log(e);
+  //   this.remove();
+  // });
 }; // 简化url
 
 
 var simplify = function simplify(string) {
-  var x = string.replace("http://", "").replace("https://", "").replace("www.", ""); // .replace("/", "");
-
+  var x = string.replace("http://", "").replace("https://", "").replace("www.", "").replace("/", "");
   return x;
 };
 
 render();
 $(".addSite").on("click", function () {
-  var url = window.prompt("请输入要添加的网址噢");
+  var url = window.prompt("请输入要添加的正确网址噢");
 
   if (url.indexOf("http") !== 0) {
     url = "https://" + url;
@@ -161,9 +177,9 @@ $(".addSite").on("click", function () {
 
   hashMap.push({
     logo: simplify(url)[0].toUpperCase(),
-    url: url
+    url: url,
+    name: simplify(url)
   });
-  console.log(url);
   render();
 });
 
@@ -173,4 +189,4 @@ window.onbeforeunload = function () {
   localStorage.setItem("siteData", stringData);
 };
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=/main.e90a4351.js.map
+//# sourceMappingURL=main.2a51c195.js.map
